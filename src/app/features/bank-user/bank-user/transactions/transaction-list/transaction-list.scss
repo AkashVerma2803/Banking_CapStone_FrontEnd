@@ -1,0 +1,18 @@
+.transaction-list-container {
+    .page-header{
+        margin-bottom: 24px;
+
+        h1{
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+            color: #333;
+        }
+    }
+
+    mat-card{
+        mat-card-content{
+            padding: 0;
+        }
+    }
+}

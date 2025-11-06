@@ -1,0 +1,21 @@
+<div class="bank-user-list-container">
+  <div class="page-header">
+    <h1>Bank Users Management</h1>
+    <button mat-raised-button color="primary" (click)="createBankUser()">
+      <mat-icon>person_add</mat-icon>
+      Add Bank User
+    </button>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <app-data-table
+        [columns]="columns"
+        [data]="bankUsers"
+        [actions]="actions"
+        [loading]="loading"
+        (rowClick)="onRowClick($event)">
+      </app-data-table>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,49 @@
+<div class="file-upload">
+  <input type="file" 
+         #fileInput 
+         [accept]="accept" 
+         [multiple]="multiple"
+         (change)="onFileSelected($event)"
+         hidden>
+  
+  <button mat-raised-button 
+          color="primary" 
+          (click)="fileInput.click()"
+          [disabled]="uploading">
+    <mat-icon>cloud_upload</mat-icon>
+    Choose File{{ multiple ? 's' : '' }}
+  </button>
+
+  <div class="file-info" *ngIf="selectedFile && !multiple">
+    <div class="file-details">
+      <mat-icon>description</mat-icon>
+      <div class="file-text">
+        <p class="file-name">{{ selectedFile.name }}</p>
+        <p class="file-size">{{ formatFileSize(selectedFile.size) }}</p>
+      </div>
+      <button mat-icon-button (click)="removeFile()" color="warn">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="files-list" *ngIf="selectedFiles.length > 0 && multiple">
+    <div class="file-details" *ngFor="let file of selectedFiles; let i = index">
+      <mat-icon>description</mat-icon>
+      <div class="file-text">
+        <p class="file-name">{{ file.name }}</p>
+        <p class="file-size">{{ formatFileSize(file.size) }}</p>
+      </div>
+      <button mat-icon-button (click)="removeFile(i)" color="warn">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-progress-bar mode="determinate" 
+                    [value]="uploadProgress" 
+                    *ngIf="uploading">
+  </mat-progress-bar>
+
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

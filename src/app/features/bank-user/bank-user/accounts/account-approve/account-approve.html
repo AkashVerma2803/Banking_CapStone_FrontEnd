@@ -1,0 +1,62 @@
+<div class="account-approve-container">
+  <div class="page-header">
+    <h1>Approve/Reject Account</h1>
+  </div>
+
+  <mat-card *ngIf="!loading && account">
+    <mat-card-header>
+      <mat-card-title>Account Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="account-info">
+        <div class="info-row">
+          <strong>Account Number:</strong>
+          <span>{{ account.accountNumber }}</span>
+        </div>
+        <div class="info-row">
+          <strong>Balance:</strong>
+          <span>{{ account.balance}}</span>
+        </div>
+        <div class="info-row">
+          <strong>Opened Date:</strong>
+          <span>{{ account.openedDate | date:'medium' }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="approval-form-card">
+    <mat-card-header>
+      <mat-card-title>Approval Decision</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="approvalForm" (ngSubmit)="onSubmit()">
+        <mat-radio-group formControlName="approve" class="approval-options">
+          <mat-radio-button [value]="true" color="primary">
+            <mat-icon>check_circle</mat-icon>
+            Approve Account
+          </mat-radio-button>
+          <mat-radio-button [value]="false" color="warn">
+            <mat-icon>cancel</mat-icon>
+            Reject Account
+          </mat-radio-button>
+        </mat-radio-group>
+
+        <div class="form-actions">
+          <button mat-raised-button type="button" (click)="onCancel()">
+            <mat-icon>close</mat-icon>
+            Cancel
+          </button>
+          <button mat-raised-button 
+                  [color]="approvalForm.value.approve ? 'primary' : 'warn'" 
+                  type="submit" 
+                  [disabled]="loading">
+            <mat-icon *ngIf="!loading">{{ approvalForm.value.approve ? 'check_circle' : 'cancel' }}</mat-icon>
+            <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+            {{ loading ? 'Processing...' : (approvalForm.value.approve ? 'Approve' : 'Reject') }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

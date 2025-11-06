@@ -1,0 +1,71 @@
+<div class="transaction-view-container">
+  <div class="page-header">
+    <h1>Transaction Details</h1>
+    <button mat-raised-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <div *ngIf="loading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+
+      <div *ngIf="!loading && transaction" class="details-grid">
+        <div class="detail-item">
+          <mat-icon>receipt</mat-icon>
+          <div class="detail-content">
+            <label>Transaction ID</label>
+            <p>{{ transaction.transactionId }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>account_balance_wallet</mat-icon>
+          <div class="detail-content">
+            <label>Amount</label>
+            <p>{{ transaction.amount | currencyFormat }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>account_balance</mat-icon>
+          <div class="detail-content">
+            <label>Balance After</label>
+            <p>{{ transaction.balanceAfter | currencyFormat }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>info</mat-icon>
+          <div class="detail-content">
+            <label>Status</label>
+            <p>
+              <mat-chip color="primary" selected>
+                {{ transaction.status }}
+              </mat-chip>
+            </p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>confirmation_number</mat-icon>
+          <div class="detail-content">
+            <label>Reference Number</label>
+            <p>{{ transaction.referenceNumber || 'N/A' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>calendar_today</mat-icon>
+          <div class="detail-content">
+            <label>Transaction Date</label>
+            <p>{{ transaction.createdAt | date:'medium' }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,88 @@
+<div class="payment-view-container">
+  <div class="page-header">
+    <h1>Payment Details</h1>
+    <div class="header-actions">
+      <button mat-raised-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Back
+      </button>
+      <button mat-raised-button 
+              color="primary" 
+              (click)="approvePayment()" 
+              *ngIf="!loading && payment.paymentStatusId === 1">
+        <mat-icon>check_circle</mat-icon>
+        Approve
+      </button>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <div *ngIf="loading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+
+      <div *ngIf="!loading && payment" class="details-grid">
+        <div class="detail-item">
+          <mat-icon>payment</mat-icon>
+          <div class="detail-content">
+            <label>Payment ID</label>
+            <p>{{ payment.paymentId }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>account_balance_wallet</mat-icon>
+          <div class="detail-content">
+            <label>Amount</label>
+            <p>{{ payment.amount | currencyFormat }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>calendar_today</mat-icon>
+          <div class="detail-content">
+            <label>Payment Date</label>
+            <p>{{ payment.paymentDate | date:'medium' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>info</mat-icon>
+          <div class="detail-content">
+            <label>Status</label>
+            <p>
+              <mat-chip [color]="getStatusColor()" selected>
+                {{ getStatusText() }}
+              </mat-chip>
+            </p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>notes</mat-icon>
+          <div class="detail-content">
+            <label>Remarks</label>
+            <p>{{ payment.remarks || 'No remarks' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>confirmation_number</mat-icon>
+          <div class="detail-content">
+            <label>Reference Number</label>
+            <p>{{ payment.referenceNumber || 'N/A' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item" *ngIf="payment.approvalDate">
+          <mat-icon>event</mat-icon>
+          <div class="detail-content">
+            <label>Approval Date</label>
+            <p>{{ payment.approvalDate | date:'medium' }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

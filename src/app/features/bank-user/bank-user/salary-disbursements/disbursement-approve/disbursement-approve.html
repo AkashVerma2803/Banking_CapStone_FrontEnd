@@ -1,0 +1,75 @@
+<div class="disbursement-approve-container">
+  <div class="page-header">
+    <h1>Approve/Reject Salary Disbursement</h1>
+  </div>
+
+  <mat-card *ngIf="!loading && disbursement">
+    <mat-card-header>
+      <mat-card-title>Disbursement Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="disbursement-info">
+        <div class="info-row">
+          <strong>Disbursement ID:</strong>
+          <span>{{ disbursement.salaryDisbursementId }}</span>
+        </div>
+        <div class="info-row">
+          <strong>Total Amount:</strong>
+          <span>{{ disbursement.totalAmount | currencyFormat }}</span>
+        </div>
+        <div class="info-row">
+          <strong>Disbursement Date:</strong>
+          <span>{{ disbursement.disbursementDate | date:'medium' }}</span>
+        </div>
+        <div class="info-row">
+          <strong>Number of Employees:</strong>
+          <span>{{ disbursement.details?.length || 0 }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="approval-form-card">
+    <mat-card-header>
+      <mat-card-title>Approval Decision</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="approvalForm" (ngSubmit)="onSubmit()">
+        <mat-radio-group formControlName="approve" class="approval-options">
+          <mat-radio-button [value]="true" color="primary">
+            <mat-icon>check_circle</mat-icon>
+            Approve Disbursement
+          </mat-radio-button>
+          <mat-radio-button [value]="false" color="warn">
+            <mat-icon>cancel</mat-icon>
+            Reject Disbursement
+          </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Remarks (Optional)</mat-label>
+          <textarea matInput 
+                    formControlName="remarks" 
+                    rows="4" 
+                    placeholder="Add any remarks..."></textarea>
+          <mat-icon matPrefix>notes</mat-icon>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-raised-button type="button" (click)="onCancel()">
+            <mat-icon>close</mat-icon>
+            Cancel
+          </button>
+          <button mat-raised-button
+                  [disabled]="loading"
+                  [color]="approvalForm.value.approve ? 'primary' : 'warn'"
+                  type="submit">
+            <mat-icon *ngIf="!loading">{{ approvalForm.value.approve ? 'check_circle' : 'cancel' }}</mat-icon>
+            <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+            {{ loading ? 'Processing...' : (approvalForm.value.approve ? 'Approve' : 'Reject') }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

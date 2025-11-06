@@ -1,0 +1,22 @@
+.sidebar-nav {
+  padding-top: 8px;
+}
+
+.active {
+  background-color: rgba(63, 81, 181, 0.1) !important;
+  color: #3f51b5 !important;
+}
+
+.menu-group {
+  box-shadow: none !important;
+  margin: 4px 0;
+}
+
+.submenu-item {
+  padding-left: 48px !important;
+  font-size: 14px;
+}
+
+mat-icon {
+  margin-right: 12px;
+}

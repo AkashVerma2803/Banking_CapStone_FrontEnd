@@ -1,0 +1,49 @@
+<div class="about-container">
+  <section class="about-header">
+    <h1>About Banking Portal</h1>
+    <p>Your trusted partner for corporate banking solutions</p>
+  </section>
+
+  <section class="mission-section">
+    <mat-card>
+      <mat-card-content>
+        <h2>Our Mission</h2>
+        <p>
+          Banking Portal is dedicated to providing comprehensive, secure, and efficient 
+          banking solutions for corporate clients. We streamline banking operations, 
+          from account management to payment processing, making corporate banking simpler 
+          and more accessible.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <h3>{{ stat.value }}</h3>
+        <p>{{ stat.label }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2>What We Offer</h2>
+    <div class="services-grid">
+      <mat-card *ngFor="let service of team">
+        <mat-card-content>
+          <mat-icon>{{ service.icon }}</mat-icon>
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to Transform Your Banking Experience?</h2>
+    <button mat-raised-button color="primary" routerLink="/login">
+      Get Started Today
+    </button>
+  </section>
+</div>

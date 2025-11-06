@@ -1,0 +1,31 @@
+.confirm-dialog {
+  min-width: 300px;
+}
+
+.dialog-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.dialog-icon mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.dialog-icon.info mat-icon { 
+  color: #2196F3; 
+}
+
+.dialog-icon.warning mat-icon { 
+  color: #FF9800; 
+}
+
+.dialog-icon.danger mat-icon { 
+  color: #F44336; 
+}
+
+mat-dialog-content {
+  text-align: center;
+}

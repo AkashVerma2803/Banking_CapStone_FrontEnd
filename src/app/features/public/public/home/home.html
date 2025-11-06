@@ -1,0 +1,79 @@
+<div class="home-container">
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Banking Portal</h1>
+      <p class="hero-subtitle">
+        Your trusted partner for corporate banking solutions
+      </p>
+      <button mat-raised-button color="primary" class="hero-button" (click)="navigateToLogin()">
+        <mat-icon>login</mat-icon>
+        Get Started
+      </button>
+    </div>
+    <div class="hero-image">
+      <mat-icon class="hero-icon">account_balance</mat-icon>
+    </div>
+  </section>
+
+
+  <section class="features-section">
+    <h2 class="section-title">Our Services</h2>
+    <div class="features-grid">
+      <mat-card class="feature-card" *ngFor="let feature of features">
+        <mat-card-content>
+          <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+    <section class="about-section">
+    <div class="about-content">
+      <h2>Why Choose Us?</h2>
+      <p>
+        We provide comprehensive banking solutions tailored for corporate clients. 
+        Our platform offers seamless account management, payment processing, 
+        salary disbursements, and much more.
+      </p>
+      <button mat-stroked-button color="primary" routerLink="/about">
+        Learn More
+      </button>
+    </div>
+  </section>
+
+
+  <section class="cta-section">
+    <h2>Ready to Get Started?</h2>
+    <p>Join thousands of businesses managing their banking operations efficiently</p>
+    <button mat-raised-button color="accent" (click)="navigateToLogin()">
+      Login Now
+    </button>
+  </section>
+
+
+  <footer class="home-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Banking Portal</h3>
+        <p>Your trusted banking partner</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a routerLink="/about">About Us</a>
+        <a routerLink="/contact">Contact</a>
+        <a routerLink="/login">Login</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: support@bankingportal.com</p>
+        <p>Phone: 1800-123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Banking Portal. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

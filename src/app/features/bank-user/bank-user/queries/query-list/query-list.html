@@ -1,0 +1,14 @@
+<div class="query-list-container">
+  <h1>Client Queries</h1>
+
+  <mat-card>
+    <mat-card-content>
+      <app-data-table
+        [columns]="columns"
+        [data]="queries"
+        [actions]="actions"
+        [loading]="loading">
+      </app-data-table>
+    </mat-card-content>
+  </mat-card>
+</div>

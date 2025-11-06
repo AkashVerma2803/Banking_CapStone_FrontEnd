@@ -1,0 +1,14 @@
+<div class="account-list-container">
+    <div class="page-header">
+        <h1>
+            Accounts management
+        </h1>
+    </div>
+
+    <mat-card>
+        <mat-card-content>
+            <app-data-table [columns]="columns" [data]="accounts" [actions]="actions" [loading]="loading" (rowClick)="onRowClick($event.account)">
+            </app-data-table>
+        </mat-card-content>
+    </mat-card>
+</div>

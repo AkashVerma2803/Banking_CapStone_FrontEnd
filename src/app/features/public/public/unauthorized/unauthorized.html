@@ -1,0 +1,21 @@
+<div class="error-container">
+    <div class="error-content">
+        <mat-icon class="error-icon">block</mat-icon>
+        <h1>403</h1>
+        <h2>Access Forbidden</h2>
+        <p>
+            You don't have permission to access this page.
+            Please contact your administrartor if you belive this is an error.
+        </p>
+        <div class="button-group">
+            <button mat-raised-button color="primary" (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+                Go Back
+            </button>
+            <button mat-stroked-button color="primary" (click)="goHome()">
+                <mat-icon>home</mat-icon>
+                Home
+            </button>
+        </div>
+    </div>
+</div>

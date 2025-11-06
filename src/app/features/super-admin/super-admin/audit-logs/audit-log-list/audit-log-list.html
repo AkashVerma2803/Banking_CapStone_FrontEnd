@@ -1,0 +1,14 @@
+<div class="audit-log-container">
+  <h1>Audit Logs</h1>
+
+  <mat-card>
+    <mat-card-content>
+      <app-data-table
+        [columns]="columns"
+        [data]="auditLogs"
+        [actions]="actions"
+        [loading]="loading">
+      </app-data-table>
+    </mat-card-content>
+  </mat-card>
+</div>

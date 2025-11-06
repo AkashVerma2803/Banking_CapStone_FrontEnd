@@ -1,0 +1,128 @@
+<div class="dashboard-container">
+  <h1 class="page-title">Super Admin Dashboard</h1>
+
+  <div class="stats-grid">
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon banks">
+          <mat-icon>account_balance</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalBanks }}</h3>
+          <p>Total Banks</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon users">
+          <mat-icon>people</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalBankUsers }}</h3>
+          <p>Bank Users</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon active">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.activeUsers }}</h3>
+          <p>Active Users</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon activities">
+          <mat-icon>history</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.recentActivities }}</h3>
+          <p>Audit Logs</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card class="quick-actions">
+    <mat-card-header>
+      <mat-card-title>Quick Actions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" routerLink="/super-admin/banks/create">
+          <mat-icon>add</mat-icon>
+          Add New Bank
+        </button>
+        <button mat-raised-button color="primary" routerLink="/super-admin/bank-users/create">
+          <mat-icon>person_add</mat-icon>
+          Add Bank User
+        </button>
+        <button mat-raised-button color="primary" routerLink="/super-admin/audit-logs">
+          <mat-icon>visibility</mat-icon>
+          View Audit Logs
+        </button>
+        <button mat-raised-button color="primary" routerLink="/super-admin/reports">
+          <mat-icon>assessment</mat-icon>
+          Generate Reports
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="content-grid">
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Recent Banks</mat-card-title>
+        <button mat-button routerLink="/super-admin/banks">View All</button>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="loading" class="loading-container">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+        <div *ngIf="!loading && recentBanks.length > 0">
+          <mat-list>
+            <mat-list-item *ngFor="let bank of recentBanks">
+              <mat-icon matListItemIcon>account_balance</mat-icon>
+              <div matListItemTitle>{{ bank.bankName }}</div>
+              <div matListItemLine>{{ bank.ifscCode }}</div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div *ngIf="!loading && recentBanks.length === 0" class="no-data">
+          <p>No banks available</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Recent Activities</mat-card-title>
+        <button mat-button routerLink="/super-admin/audit-logs">View All</button>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="loading" class="loading-container">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+        <div *ngIf="!loading && recentAuditLogs.length > 0">
+          <mat-list>
+            <mat-list-item *ngFor="let log of recentAuditLogs">
+              <mat-icon matListItemIcon>history</mat-icon>
+              <div matListItemTitle>{{ log.action }}</div>
+              <div matListItemLine>{{ log.timestamp | date:'short' }}</div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div *ngIf="!loading && recentAuditLogs.length === 0" class="no-data">
+          <p>No recent activities</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="disbursement-list-container">
+  <div class="page-header">
+    <h1>Salary Disbursements</h1>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <app-data-table
+        [columns]="columns"
+        [data]="disbursements"
+        [actions]="actions"
+        [loading]="loading"
+        (rowClick)="onRowClick($event)">
+      </app-data-table>
+    </mat-card-content>
+  </mat-card>
+</div>

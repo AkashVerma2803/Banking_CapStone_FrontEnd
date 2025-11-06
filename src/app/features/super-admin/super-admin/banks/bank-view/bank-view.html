@@ -1,0 +1,73 @@
+<div class="bank-view-container">
+  <div class="page-header">
+    <h1>Bank Details</h1>
+    <div class="header-actions">
+      <button mat-raised-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Back
+      </button>
+      <button mat-raised-button color="primary" (click)="editBank()" *ngIf="!loading">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <div *ngIf="loading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+
+      <div *ngIf="!loading && bank" class="details-grid">
+        <div class="detail-item">
+          <mat-icon>account_balance</mat-icon>
+          <div class="detail-content">
+            <label>Bank Name</label>
+            <p>{{ bank.bankName }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>code</mat-icon>
+          <div class="detail-content">
+            <label>IFSC Code</label>
+            <p>{{ bank.ifscCode }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>location_on</mat-icon>
+          <div class="detail-content">
+            <label>Address</label>
+            <p>{{ bank.address }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>phone</mat-icon>
+          <div class="detail-content">
+            <label>Contact Number</label>
+            <p>{{ bank.contactNumber }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>email</mat-icon>
+          <div class="detail-content">
+            <label>Support Email</label>
+            <p>{{ bank.supportEmail }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>calendar_today</mat-icon>
+          <div class="detail-content">
+            <label>Created At</label>
+            <p>{{ bank.createdAt | date:'medium' }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
